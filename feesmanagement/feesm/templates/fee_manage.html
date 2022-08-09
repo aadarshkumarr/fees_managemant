@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>{{title}}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/navbar-fixed/">
+
+    <!-- Bootstrap core CSS -->
+    {% load static %}
+    <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
+  </head>
+  <body>
+{% include 'navbar.html' %}
+
+<main role="main" class="container">
+   {% if messages %}
+        <ul class="messages">
+               {% for message in messages %}
+                     <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+               {% endfor %}
+       </ul>
+  {% endif %}
+  <div class="jumbotron">
+    <div class="header">
+          <h1>{{title}}</h1>
+    </div>
+      <div class="row">
+          <div class="col-sm-2">
+        {% load crispy_forms_tags %}
+            <form method='POST' action=''>{% csrf_token %}
+            {{form|crispy}}
+                <input class="btn btn-success" type="submit" value='Search'/>
+            </form>
+          </div>
+            <br>
+
+          <div class="col-sm-10">
+                  <div class="display_table">
+                    <table class='table'>
+                    <thead>
+                      <tr>
+                        <th>COUNT</th>
+                        <th>Enrollment No.</th>
+                        <th>Student Name</th>
+                        <th>Balance Fees</th>
+                        <th>Pay</th>
+                          <th>Invoice</th>
+                      </tr>
+                    </thead>
+                  {% for instance in queryset %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{instance.university_enrollment_no}}</td>
+                        <td>{{instance.name_of_student}}</td>
+                        <td>{{instance.Balance_fee}}</td>
+                        <td><a href="{% url 'update_fee' instance.university_enrollment_no %}" class="btn btn-success">Pay</a></td>
+                        <td><a href="{% url 'invoice' instance.university_enrollment_no %}" class="btn btn-success">Print</a></td>
+                      </tr>
+
+                  {% endfor %}
+                </table>
+                </div>
+          </div>
+      </div>
+  </div>
+</main>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui-1.13.1/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/myjs.js' %}"></script>
+<script src="{% static 'js/pager/paging.js' %}"></script>
+
+  </body>
+</html>

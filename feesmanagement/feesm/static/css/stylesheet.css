@@ -1,0 +1,70 @@
+body {
+background-color: #34eb6b;
+background-image: url("../img/bg.jpg");
+}
+
+/*Align the title to the center of the page*/
+.table{
+	font-size: 13px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+	text-align: center;
+}
+
+/*Make alternating colors for the table rows*/
+.table tr:nth-child(odd){
+	background: #B8CAE4
+}
+
+.table tr:nth-child(even){
+	background: #dae5f4
+}
+
+th {
+  background-color: #337ab7;
+  color: white;
+}
+
+.display_table{
+	border-bottom-right-radius: 20px;
+	padding-left: 0px;
+	padding-right 5px;
+	padding-bottom: 5px;
+	box-shadow: 9px 9px 15px 4px #2e6da4;
+}
+
+.header {
+    font-family: helvetica;
+    color: #337ab7;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    text-shadow: 6px 6px 6px #c9c6c6;
+    display: block;
+    font-weight: bolder;
+}
+
+.success{
+     list-style: none;
+     background-color: #2e6da4;
+     color: white;
+     box-shadow: 12px 12px 12px #e61c66;
+     text-align: center;
+ }
+
+ .column {
+  float: left;
+  width: 33px;
+  padding: 5px;
+}
+
+ .jumbotron {
+            top: 50%;
+            box-shadow: 0 0 5px 0;
+            background: inherit;
+            backdrop-filter: blur(5px);
+            margin: 100px;
+            text-align: center;
+        }
+

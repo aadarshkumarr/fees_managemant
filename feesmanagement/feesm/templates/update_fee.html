@@ -1,0 +1,85 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+        {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>{{title}}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/navbar-fixed/">
+
+    <link href="{% static 'js/jquery-ui-1.13.1.custom/jquery-ui.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.13.1.custom/jquery-ui.structure.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/jquery-ui-1.13.1.custom/jquery-ui.theme.min.css' %}" rel="stylesheet">
+
+
+    <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'js/jquery-ui-1.13.1.custom/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/myjs.js' %}"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    {% load crispy_forms_tags %}
+<main role="main" class="container">
+  <div class="jumbotron">
+        <div class="header">
+          <h1>{{title}}</h1>
+    </div>
+        <div class="display_table">
+          <table class='table'>
+                  <tr>
+                    <th>Enrollment No.</th>
+                    <th>Student Name</th>
+                    <th>Total Fee</th>
+                  </tr>
+                  <tr>
+                    <td>{{queryset.university_enrollment_no}}</td>
+                    <td>{{queryset.name_of_student}}</td>
+                    <td>{{queryset.total_fee}}</td>
+                  </tr>
+          </table>
+        </div><br><br>
+      <form method='POST' action=''>{% csrf_token %}
+		{{form|crispy}}
+
+        <input type="submit" value='Deposit' class="btn btn-success"/>
+
+
+      </form>
+
+
+  </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script></body>
+</html>
